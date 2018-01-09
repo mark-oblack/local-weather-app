@@ -9,3 +9,9 @@
 //	b) When user clicks button, farenheit is calculated into Celsius
 //	c) When button is clicked again, variable containing farenheit value is displayed
 //
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    $(".location").html("latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude);
+  });
+}
