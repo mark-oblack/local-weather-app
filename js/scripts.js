@@ -12,6 +12,23 @@
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
-    $(".location").html("latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude);
-  });
+    //$(".location").html("latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude);
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+	var api="https://fcc-weather-api.glitch.me/api/current?lat=" + latitude + "&lon=" + longitude;
+		/*$.getJSON(api, function(data){
+			var rawJson = JSON.stringify(data);
+            var json = JSON.parse(rawJson);
+            updateWeather(json);
+		});*/
+	console.log(api);
+	});
 }
+
+/*$(document).ready(function(){
+	var api="api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}";
+	$.getJSON(api, function(data){
+
+	});
+
+});*/
