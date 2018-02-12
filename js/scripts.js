@@ -16,12 +16,10 @@ if (navigator.geolocation) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
 	var api="https://fcc-weather-api.glitch.me/api/current?lat=" + latitude + "&lon=" + longitude;
-		/*$.getJSON(api, function(data){
-			var rawJson = JSON.stringify(data);
-            var json = JSON.parse(rawJson);
-            updateWeather(json);
-		});*/
-	console.log(api);
+		$.getJSON(api, function(data){
+			var weatherType = data.weather[0].description;
+			console.log(weatherType);
+		});
 	});
 }
 
