@@ -28,16 +28,10 @@ $(document).ready(function() {
 				city = data.name;
 				celsius = data.main.temp;
 				farenheit = ((celsius * 1.8) + 32);
-				console.log(farenheit);
+				$(".location").html(city);
+				$(".temperature").html(farenheit);
+				$(".current-weather").html(weatherType);
 			});
 		});
 	}
 });
-
-/*$(document).ready(function(){
-	var api="api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}";
-	$.getJSON(api, function(data){
-
-	});
-
-});*/
