@@ -17,6 +17,12 @@ $(document).ready(function() {
 	var celsius;
 	var city;
 	var weatherType;
+	var date = new Date();
+	var hours = date.getHours();
+	if (hours > 12) {
+		hours = hours - 12;
+	}
+	var time = hours + ":" + date.getMinutes();
 	if (navigator.geolocation) {
 	  navigator.geolocation.getCurrentPosition(function(position) {
 	    //$(".location").html("latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude);
@@ -24,13 +30,14 @@ $(document).ready(function() {
 	    longitude = position.coords.longitude;
 		var api="https://fcc-weather-api.glitch.me/api/current?lat=" + latitude + "&lon=" + longitude;
 			$.getJSON(api, function(data){
-				weatherType = data.weather[0].description;
+				weatherType = data.weather[0].main;
 				city = data.name;
 				celsius = data.main.temp;
 				farenheit = ((celsius * 1.8) + 32);
 				$(".location").html(city);
-				$(".temperature").html(farenheit);
+				$(".temperature").html(farenheit.toFixed(0) + "&deg");
 				$(".current-weather").html(weatherType);
+				$(".local-time").html(time);
 			});
 		});
 	}
