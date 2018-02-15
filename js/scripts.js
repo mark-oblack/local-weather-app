@@ -17,16 +17,19 @@ $(document).ready(function() {
 	var celsius;
 	var city;
 	var weatherType;
+
+	//Current Time
 	var date = new Date();
 	var hours = date.getHours();
 	if (hours > 12) {
 		hours = hours - 12;
 	}
 	var time = hours + ":" + date.getMinutes();
-	if (navigator.geolocation) {
-	  navigator.geolocation.getCurrentPosition(function(position) {
-	    //$(".location").html("latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude);
-	    latitude = position.coords.latitude;
+
+	//Geolocation
+	if (navigator.geolocation) { //Prompts user to allow/block browser from viewing location
+	  navigator.geolocation.getCurrentPosition(function(position) { //obtains geolocation
+	    latitude = position.coords.latitude; 
 	    longitude = position.coords.longitude;
 		var api="https://fcc-weather-api.glitch.me/api/current?lat=" + latitude + "&lon=" + longitude;
 			$.getJSON(api, function(data){
@@ -34,11 +37,26 @@ $(document).ready(function() {
 				city = data.name;
 				celsius = data.main.temp;
 				farenheit = ((celsius * 1.8) + 32);
+				celsius = celsius.toFixed(0);
+				farenheit = farenheit.toFixed(0);
 				$(".location").html(city);
-				$(".temperature").html(farenheit.toFixed(0) + "&deg");
+				$(".temperature").html(farenheit + "&deg");
 				$(".current-weather").html(weatherType);
 				$(".local-time").html(time);
 			});
 		});
 	}
+
+	//Temperature conversion
+	$(".farenheit-button").click(function() {
+		$(".temperature").html(farenheit + "&deg");
+	});
+
+	$(".celsius-button").click(function() {
+		$(".temperature").html(celsius + "&deg");
+	});
+
+
+
+
 });
