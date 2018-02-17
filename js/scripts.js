@@ -19,12 +19,20 @@ $(document).ready(function() {
 	var weatherType;
 
 	//Current Time
+	var time;
 	var date = new Date();
 	var hours = date.getHours();
+	var minutes = date.getMinutes();
+
 	if (hours > 12) {
-		hours = hours - 12;
+		hours -= 12;
 	}
-	var time = hours + ":" + date.getMinutes();
+
+	if (minutes < 10) {
+		time = hours + ":0" + minutes;
+	} else {
+		time = hours + ":" + minutes;
+	}
 
 	//Geolocation
 	if (navigator.geolocation) { //Prompts user to allow/block browser from viewing location
@@ -39,13 +47,35 @@ $(document).ready(function() {
 				farenheit = ((celsius * 1.8) + 32);
 				celsius = celsius.toFixed(0);
 				farenheit = farenheit.toFixed(0);
+				//Write to HTML
+				$(".local-time").html(time);
 				$(".location").html(city);
 				$(".temperature").html(farenheit + "&deg");
 				$(".current-weather").html(weatherType);
-				$(".local-time").html(time);
+				//Adjust src of .weather-icon based on weather
+				switch(weatherType) {
+					case "Snow":
+					$(".weather-icon").attr("src", "assets/cloudy.jpg");
+					break;
+
+					case "Mist":
+					$(".weather-icon").attr("src", "assets/cloudy.jpg");
+					break;
+				}
 			});
 		});
 	}
+
+	//Weather icon
+	/*switch(weatherType) {
+		case "Snow":
+		$(".weather-icon").attr("src", "assets/cloudy.jpg");
+		break;
+
+		case "Mist":
+		$(".weather-icon").attr("src", "assets/cloudy.jpg");
+		break;
+	}*/
 
 	//Temperature conversion
 	$(".farenheit-button").click(function() {
@@ -53,7 +83,7 @@ $(document).ready(function() {
 	});
 
 	$(".celsius-button").click(function() {
-		$(".temperature").html(celsius + "&deg");
+		$(".temperature").html(celsius + "&deg"); //displays 0 as -0; need to fix
 	});
 
 
