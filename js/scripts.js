@@ -55,27 +55,17 @@ $(document).ready(function() {
 				//Adjust src of .weather-icon based on weather
 				switch(weatherType) {
 					case "Snow":
+					$(".weather-icon").attr("src", "assets/snow.jpg");
+					break;
+					case "Cloudy":
 					$(".weather-icon").attr("src", "assets/cloudy.jpg");
 					break;
-
-					case "Mist":
-					$(".weather-icon").attr("src", "assets/cloudy.jpg");
-					break;
+					default: 
+					$(".weather-icon").attr("src", "");
 				}
 			});
 		});
 	}
-
-	//Weather icon
-	/*switch(weatherType) {
-		case "Snow":
-		$(".weather-icon").attr("src", "assets/cloudy.jpg");
-		break;
-
-		case "Mist":
-		$(".weather-icon").attr("src", "assets/cloudy.jpg");
-		break;
-	}*/
 
 	//Temperature conversion
 	$(".farenheit-button").click(function() {
