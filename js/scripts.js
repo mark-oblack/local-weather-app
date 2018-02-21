@@ -57,8 +57,23 @@ $(document).ready(function() {
 					case "Snow":
 					$(".weather-icon").attr("src", "assets/snow.jpg");
 					break;
-					case "Cloudy":
+					case "Clouds":
 					$(".weather-icon").attr("src", "assets/cloudy.jpg");
+					break;
+					case "Thunderstorm":
+					$(".weather-icon").attr("src", "assets/thunder.jpg");
+					break;
+					case "Rain":
+					$(".weather-icon").attr("src", "assets/rain.jpg");
+					break;
+					case "Drizzle":
+					$(".weather-icon").attr("src", "assets/rain.jpg");
+					break;
+					case "Clear":
+					$(".weather-icon").attr("src", "assets/clear.jpg");
+					break;
+					case "Mist":
+					$(".weather-icon").attr("src", "assets/windy.jpg");
 					break;
 					default: 
 					$(".weather-icon").attr("src", "");
