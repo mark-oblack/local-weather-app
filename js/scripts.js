@@ -64,25 +64,28 @@ $(document).ready(function() {
 				//Adjust src of .weather-icon based on weather
 				switch(weatherType) {
 					case "Snow":
-					$(".weather-icon").attr("src", "assets/snow.jpg");
+					$(".weather-icon").attr("src", "assets/snow.png");
 					break;
 					case "Clouds":
-					$(".weather-icon").attr("src", "assets/cloudy.jpg");
+					$(".weather-icon").attr("src", "assets/cloudy.png");
 					break;
 					case "Thunderstorm":
-					$(".weather-icon").attr("src", "assets/thunder.jpg");
+					$(".weather-icon").attr("src", "assets/thunder.png");
 					break;
 					case "Rain":
-					$(".weather-icon").attr("src", "assets/rain.jpg");
+					$(".weather-icon").attr("src", "assets/rain.png");
 					break;
 					case "Drizzle":
-					$(".weather-icon").attr("src", "assets/rain.jpg");
+					$(".weather-icon").attr("src", "assets/rain.png");
 					break;
 					case "Clear":
-					$(".weather-icon").attr("src", "assets/clear.jpg");
+					$(".weather-icon").attr("src", "assets/clear.png");
 					break;
 					case "Mist":
-					$(".weather-icon").attr("src", "assets/windy.jpg");
+					$(".weather-icon").attr("src", "assets/windy.png");
+					break;
+					case "Sunnt":
+					$(".weather-icon").attr("src", "assets/windy.png");
 					break;
 					default: 
 					$(".weather-icon").attr("src", "");
