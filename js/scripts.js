@@ -20,19 +20,25 @@ $(document).ready(function() {
 
 	//Current Time
 	var time;
-	var date = new Date();
+	/*var date = new Date();
 	var hours = date.getHours();
-	var minutes = date.getMinutes();
-
-	if (hours > 12) {
-		hours -= 12;
+	var minutes = date.getMinutes();*/
+	var getTime = function () {
+		var date = new Date();
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		if (hours > 12 && minutes < 10) {
+			time = (hours - 12) + ":0" + minutes;
+		} else if (hours < 12 && minutes < 10) {
+			time = hours + ":0" + minutes;
+		} else if (hours > 12 && minutes > 10) {
+			time = (hours - 12) + ":" + minutes;
+		} else {
+			time = hours + ":" + minutes;
+		}
+		$(".local-time").html(time);
 	}
-
-	if (minutes < 10) {
-		time = hours + ":0" + minutes;
-	} else {
-		time = hours + ":" + minutes;
-	}
+	setInterval(getTime, 1000);//runs getTime every second to acquire updated time; should we also update the weather?
 
 	//Geolocation
 	if (navigator.geolocation) { //Prompts user to allow/block browser from viewing location
@@ -47,8 +53,11 @@ $(document).ready(function() {
 				farenheit = ((celsius * 1.8) + 32);
 				celsius = celsius.toFixed(0);
 				farenheit = farenheit.toFixed(0);
+				//Corrects issue of celsius displaying as -0;
+				if (celsius === -0) {
+					celsius = 0;
+				}
 				//Write to HTML
-				$(".local-time").html(time);
 				$(".location").html(city);
 				$(".temperature").html(farenheit + "&deg");
 				$(".current-weather").html(weatherType);
@@ -90,8 +99,4 @@ $(document).ready(function() {
 	$(".celsius-button").click(function() {
 		$(".temperature").html(celsius + "&deg"); //displays 0 as -0; need to fix
 	});
-
-
-
-
 });
