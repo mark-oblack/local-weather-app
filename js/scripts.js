@@ -89,7 +89,7 @@ $(document).ready(function() {
 					case "Mist":
 					$(".weather-icon").attr("src", "assets/windy.png");
 					break;
-					case "Sunnt":
+					case "Sunny":
 					$(".weather-icon").attr("src", "assets/windy.png");
 					break;
 					default: 
