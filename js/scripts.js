@@ -18,6 +18,11 @@ $(document).ready(function() {
 	var city;
 	var weatherType;
 
+	//Hide load screen; try to use CSS animations instead
+	/*setTimeout(function() {
+		document.getElementById("load-screen").className = "hide";
+	}, 6000);*/
+
 	//Current Time
 	var time;
 	/*var date = new Date();
@@ -53,6 +58,7 @@ $(document).ready(function() {
 			$.getJSON(api, function(data){
 				weatherType = data.weather[0].main;
 				city = data.name;
+				country = data.sys.country;
 				celsius = data.main.temp;
 				farenheit = ((celsius * 1.8) + 32);
 				celsius = celsius.toFixed(0);
@@ -62,8 +68,8 @@ $(document).ready(function() {
 					celsius = 0;
 				}
 				//Write to HTML
-				$(".location").html(city);
-				$(".temperature").html(farenheit + "&deg");
+				$(".location").html(city + ", " + country);
+				$(".temperature").html(farenheit + "&deg; F");
 				$(".current-weather").html(weatherType);
 				//Adjust src of .weather-icon based on weather
 				$(".weather-icon-container").append("<img class='weather-icon' alt='Weather Description'>");
@@ -87,10 +93,10 @@ $(document).ready(function() {
 					$(".weather-icon").attr("src", "assets/clear.png");
 					break;
 					case "Mist":
-					$(".weather-icon").attr("src", "assets/windy.png");
+					$(".weather-icon").attr("src", "assets/mist.png");
 					break;
 					case "Sunny":
-					$(".weather-icon").attr("src", "assets/windy.png");
+					$(".weather-icon").attr("src", "assets/sunny.png");
 					break;
 					default: 
 					$(".weather-icon").attr("src", "");
@@ -101,10 +107,10 @@ $(document).ready(function() {
 
 	//Temperature conversion
 	$(".farenheit-button").click(function() {
-		$(".temperature").html(farenheit + "&deg");
+		$(".temperature").html(farenheit + "&deg; F");
 	});
 
 	$(".celsius-button").click(function() {
-		$(".temperature").html(celsius + "&deg"); //displays 0 as -0; need to fix
+		$(".temperature").html(celsius + "&deg; C"); //displays 0 as -0; need to fix
 	});
 });
