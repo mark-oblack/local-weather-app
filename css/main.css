@@ -1,7 +1,24 @@
 
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+
 body {
 	background: #2d3436;
 	color: #dfe6e9;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+header {
+	text-align: center;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 2em;
+	margin: 15px 0;
+}
+
+p {
+	font-weight: 400;
 }
 
 .wrapper {
@@ -13,11 +30,12 @@ body {
 }
 
 .weather-information {
-	border: 1px solid black;
+	//border: 1px solid black;
 	text-align: center;
 }
 
 .weather-icon {
 	height: 60%;
 	width: 60%;
+	margin: 15px 0;
 }

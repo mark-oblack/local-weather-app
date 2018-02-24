@@ -62,6 +62,7 @@ $(document).ready(function() {
 				$(".temperature").html(farenheit + "&deg");
 				$(".current-weather").html(weatherType);
 				//Adjust src of .weather-icon based on weather
+				$(".weather-icon-container").append("<img class='weather-icon' alt='Weather Description'>");
 				switch(weatherType) {
 					case "Snow":
 					$(".weather-icon").attr("src", "assets/snow.png");
