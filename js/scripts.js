@@ -28,13 +28,17 @@ $(document).ready(function() {
 		var hours = date.getHours();
 		var minutes = date.getMinutes();
 		if (hours > 12 && minutes < 10) {
-			time = (hours - 12) + ":0" + minutes;
+			time = (hours - 12) + ":0" + minutes + " PM";
 		} else if (hours < 12 && minutes < 10) {
-			time = hours + ":0" + minutes;
+			time = hours + ":0" + minutes + " AM";
 		} else if (hours > 12 && minutes > 10) {
-			time = (hours - 12) + ":" + minutes;
+			time = (hours - 12) + ":" + minutes + " PM";
+		} else if (hours === 12 && minutes < 10) {
+			time = hours + ":0" + minutes + " PM";
+		} else if (hours === 12 && minutes > 10) {
+			time = (hours) + ":" + minutes + " PM";
 		} else {
-			time = hours + ":" + minutes;
+			time = hours + ":" + minutes + " AM";
 		}
 		$(".local-time").html(time);
 	}
