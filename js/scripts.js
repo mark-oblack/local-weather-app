@@ -18,11 +18,6 @@ $(document).ready(function() {
 	var city;
 	var weatherType;
 
-	//Hide load screen; try to use CSS animations instead
-	/*setTimeout(function() {
-		document.getElementById("load-screen").className = "hide";
-	}, 6000);*/
-
 	//Current Time
 	var time;
 	/*var date = new Date();
@@ -101,6 +96,11 @@ $(document).ready(function() {
 					default: 
 					$(".weather-icon").attr("src", "");
 				}
+
+				//Hide load screen; try to use CSS animations instead
+				setTimeout(function() {
+					document.getElementById("load-screen").className = "hide";
+				}, 100);
 			});
 		});
 	}

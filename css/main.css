@@ -69,7 +69,7 @@ Load Screen
 --------------------*/
 
 #load-screen {
-	background-color: #fff;
+	background-color: #ecf0f1;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -98,6 +98,44 @@ Load Screen
 	height: 150px;
 	background: none;
 	border: 4px solid black;
+}
+
+.sun-body {
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	width: 50%;
+	height: 50%;
+	background-color: #f9ca24;
+	border-radius: 50%;
+}
+
+.sun-body-copy {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #f9ca24;
+	border-radius: 50%;
+}
+
+.sun-ray {
+	position: absolute;
+	height: 30%;
+	width: 10%;
+	background-color: #f9ca24;
+	border-radius: 50px;
+}
+
+.ray1 {
+	margin-top: -80%;
+	top: 35%;
+	left: 45%;
+}
+
+.ray2 {
+	margin-top: 80%;
+	top: 35%;
+	left: 45%;
 }
 
 
