@@ -1,4 +1,6 @@
 
 @media all and (min-width: 37.5em) {
-
+	.load-screen-text {
+		font-size: 2em;
+	}
 }

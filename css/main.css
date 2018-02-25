@@ -10,6 +10,7 @@ body {
 	background: #2d3436;
 	color: #dfe6e9;
 	font-family: 'Roboto', sans-serif;
+	width: 100%;
 }
 
 header {
@@ -65,13 +66,17 @@ Load Screen
 
 #load-screen {
 	background-color: #ecf0f1;
+	position: absolute;
 	display: flex;
+	align-items: center;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
-	position: absolute;
 	height: 100%;
 	width: 100%;
+}
+
+.centered-content {
+	align-self: center;
 }
 
 #load-screen.hide {
@@ -83,7 +88,7 @@ Load Screen
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
 	font-size: 1.5em;
-	/*margin-top: 50%;*/
+	text-align: center;
 }
 
 .load-icon {
@@ -121,7 +126,7 @@ Load Screen
 	height: 50%;
 	background-color: #f9ca24;
 	border-radius: 50%;
-  	animation: rotation 30s infinite;
+  	animation: rotation 10s infinite linear;
 }
 
 .sun-body {
@@ -268,4 +273,15 @@ Weather Information
 	height: 60%;
 	width: 60%;
 	margin: 15px 0;
+}
+
+
+/*--------------------
+Responsive CSS
+--------------------*/
+
+@media all and (min-width: 37.5em) {
+	.load-screen-text {
+		font-size: 2em;
+	}
 }
