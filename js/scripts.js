@@ -20,9 +20,6 @@ $(document).ready(function() {
 
 	//Current Time
 	var time;
-	/*var date = new Date();
-	var hours = date.getHours();
-	var minutes = date.getMinutes();*/
 	var getTime = function () {
 		var date = new Date();
 		var hours = date.getHours();
@@ -36,10 +33,15 @@ $(document).ready(function() {
 		} else if (hours === 12 && minutes < 10) {
 			time = hours + ":0" + minutes + " PM";
 		} else if (hours === 12 && minutes > 10) {
-			time = (hours) + ":" + minutes + " PM";
+			time = hours + ":" + minutes + " PM";
+		} else if (hours === 0 && minutes < 10) {
+			time = (hours + 12) + ":0" + minutes + " AM";
+		} else if (hours === 0 && minutes > 10) {
+			time = (hours + 12) + ":" + minutes + " AM";
 		} else {
 			time = hours + ":" + minutes + " AM";
 		}
+
 		$(".local-time").html(time);
 	}
 	setInterval(getTime, 1000);//runs getTime every second to acquire updated time; should we also update the weather?
@@ -111,6 +113,6 @@ $(document).ready(function() {
 	});
 
 	$(".celsius-button").click(function() {
-		$(".temperature").html(celsius + "&deg; C"); //displays 0 as -0; need to fix
+		$(".temperature").html(celsius + "&deg; C");
 	});
 });

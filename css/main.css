@@ -1,8 +1,3 @@
-/* Loading Screen
-- Create HTML object that fills the page, contains loading icon
-- Style the object with CSS, style the load icon with @keyframes
-- Give the object z-index 100
-- Set display to none after 5-10 seconds */
 
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
@@ -72,6 +67,7 @@ Load Screen
 	background-color: #ecf0f1;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	position: absolute;
 	height: 100%;
@@ -86,8 +82,8 @@ Load Screen
 	color: #2d3436;
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
-	font-size: 2.5em;
-	margin-top: 10%;
+	font-size: 1.5em;
+	/*margin-top: 50%;*/
 }
 
 .load-icon {
@@ -97,7 +93,35 @@ Load Screen
 	width: 150px;
 	height: 150px;
 	background: none;
-	border: 4px solid black;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.sun-body {
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	width: 50%;
+	height: 50%;
+	background-color: #f9ca24;
+	border-radius: 50%;
+  	animation: rotation 30s infinite;
 }
 
 .sun-body {
@@ -136,6 +160,78 @@ Load Screen
 	margin-top: 80%;
 	top: 35%;
 	left: 45%;
+}
+
+.ray3 {
+  position: absolute;
+  top: -28%;
+  left: 95%;
+  -ms-transform: rotate(36deg);
+  -webkit-transform: rotate(36deg);
+  transform: rotate(36deg);
+}
+
+.ray4 {
+  position: absolute;
+  top: -28%;
+  right: 95%;
+  -ms-transform: rotate(-36deg);
+  -webkit-transform: rotate(-36deg);
+  transform: rotate(-36deg);
+}
+
+.ray5 {
+  position: absolute;
+  top: 102%;
+  right: 90%;
+  -ms-transform: rotate(36deg);
+  -webkit-transform: rotate(36deg);
+  transform: rotate(36deg);
+}
+
+.ray6 {
+  position: absolute;
+  top: 102%;
+  left: 90%;
+  -ms-transform: rotate(-36deg);
+  -webkit-transform: rotate(-36deg);
+  transform: rotate(-36deg);
+}
+
+.ray7 {
+  position: absolute;
+  top: 13%;
+  left: 122%;
+  -ms-transform: rotate(72deg);
+  -webkit-transform: rotate(72deg);
+  transform: rotate(72deg);
+}
+
+.ray8 {
+  position: absolute;
+  top: 64%;
+  left: 120%;
+  -ms-transform: rotate(108deg);
+  -webkit-transform: rotate(108deg);
+  transform: rotate(108deg);
+}
+
+.ray9 {
+  position: absolute;
+  top: 64%;
+  right: 120%;
+  -ms-transform: rotate(-108deg);
+  -webkit-transform: rotate(-108deg);
+  transform: rotate(-108deg);
+}
+
+.ray10 {
+  position: absolute;
+  top: 13%;
+  right: 122%;
+  -ms-transform: rotate(-72deg);
+  -webkit-transform: rotate(-72deg);
+  transform: rotate(-72deg);
 }
 
 
