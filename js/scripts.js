@@ -42,9 +42,11 @@ $(document).ready(function() {
 			time = hours + ":" + minutes + " AM";
 		}
 
-		$(".local-time").html(time);
+		$(".local-time").html("@ " + time);
 	}
-	setInterval(getTime, 1000);//runs getTime every second to acquire updated time; should we also update the weather?
+
+	getTime();
+	//setInterval(getTime, 1000);//runs getTime every second to acquire updated time; should we also update the weather?
 
 	//Geolocation
 	if (navigator.geolocation) { //Prompts user to allow/block browser from viewing location

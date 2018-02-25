@@ -6,11 +6,20 @@
 /*--------------------
 General Styles
 --------------------*/
+* {
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100vh;
+	min-height: 100vh;
+	width: 100%;
+}
+
 body {
 	background: #2d3436;
 	color: #dfe6e9;
 	font-family: 'Roboto', sans-serif;
-	width: 100%;
 }
 
 header {
@@ -20,7 +29,7 @@ header {
 h1 {
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
-	font-size: 2.5em;
+	font-size: 2em;
 	margin: 15px 0;
 	text-shadow: -2px 0px #212728;
 }
@@ -39,23 +48,18 @@ F/C Buttons
 button {
 	border: none;
 	background-color: #0984e3;
-	/*border-radius: 10px;*/
 	border-radius: 50%;
 	color: #dfe6e9;
 	cursor: pointer;
 	font-size: 1.2em;
 	font-weight: 500;
-	margin: 15px 5px;
+	margin: 25px 5px;
 	height: 50px;
 	width: 50px;
 }
 
 button:hover {
 	background-color: #0a76bf;
-}
-
-.active {
-	/*background-color: #74b9ff;*/
 }
 
 
@@ -87,18 +91,24 @@ Load Screen
 	color: #2d3436;
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
-	font-size: 1.5em;
+	font-size: 1.4em;
 	text-align: center;
+	text-shadow: 1.25px 1.25px rgba(0,0,0, 0.15);
 }
 
 .load-icon {
 	position: relative;
 	margin: auto;
-	margin-top: 5%;
-	width: 150px;
-	height: 150px;
+	margin-top: 30px;
+	width: 130px;
+	height: 130px;
 	background: none;
 }
+
+
+/*--------------------
+Sun Loading Icon
+--------------------*/
 
 @-webkit-keyframes rotation {
   from {
@@ -265,7 +275,6 @@ Weather Information
 }
 
 .weather-information {
-	/*border: 1px solid black;*/
 	text-align: center;
 }
 
@@ -273,6 +282,13 @@ Weather Information
 	height: 60%;
 	width: 60%;
 	margin: 15px 0;
+}
+
+.refresh-notice {
+	font-style: italic;
+	font-weight: 300;
+	margin-top: 15px;
+	text-align: center;
 }
 
 
@@ -283,5 +299,24 @@ Responsive CSS
 @media all and (min-width: 37.5em) {
 	.load-screen-text {
 		font-size: 2em;
+	}
+
+	.load-icon {
+		height: 150px;
+		width: 150px;
+	}
+
+	h1 {
+		font-size: 2em;
+	}
+}
+
+@media all and (min-width: 58em) {
+	.load-screen-text {
+		font-size: 2.25em;
+	}
+
+	h1 {
+		font-size: 2.5em;
 	}
 }
