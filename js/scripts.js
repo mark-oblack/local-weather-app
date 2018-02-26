@@ -20,10 +20,10 @@ $(document).ready(function() {
 
 	//Current Time
 	var time;
+	var date = new Date();
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
 	var getTime = function () {
-		var date = new Date();
-		var hours = date.getHours();
-		var minutes = date.getMinutes();
 		if (hours > 12 && minutes < 10) {
 			time = (hours - 12) + ":0" + minutes + " PM";
 		} else if (hours < 12 && minutes < 10) {
@@ -47,6 +47,7 @@ $(document).ready(function() {
 
 	getTime();
 	//setInterval(getTime, 1000);//runs getTime every second to acquire updated time; should we also update the weather?
+	//Would need to re-add date, hours, and minutes if we use setInterval in the future!
 
 	//Geolocation
 	if (navigator.geolocation) { //Prompts user to allow/block browser from viewing location
@@ -83,14 +84,12 @@ $(document).ready(function() {
 					$(".weather-icon").attr("src", "assets/thunder.png");
 					break;
 					case "Rain":
-					$(".weather-icon").attr("src", "assets/rain.png");
-					break;
 					case "Drizzle":
 					$(".weather-icon").attr("src", "assets/rain.png");
 					break;
-					case "Clear":
-					$(".weather-icon").attr("src", "assets/clear.png");
-					break;
+					// case ("Clear"):
+					// $(".weather-icon").attr("src", "assets/clear.png");
+					// break;
 					case "Mist":
 					$(".weather-icon").attr("src", "assets/mist.png");
 					break;
@@ -99,6 +98,13 @@ $(document).ready(function() {
 					break;
 					default: 
 					$(".weather-icon").attr("src", "");
+				}
+
+				//Test to determine whether to use sun or moon for clear conditions
+				if(weatherType === "Clear" && (hours <= 6 || hours >= 19)) {
+					$(".weather-icon").attr("src", "assets/clear.png");
+				} else {
+					$(".weather-icon").attr("src", "assets/sunny.png");
 				}
 
 				//Hide load screen; try to use CSS animations instead
