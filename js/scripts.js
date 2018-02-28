@@ -16,6 +16,7 @@ $(document).ready(function() {
 	var fareneheit;
 	var celsius;
 	var city;
+	var country;
 	var weatherType;
 
 	//Current Time
@@ -110,7 +111,7 @@ $(document).ready(function() {
 				//Hide load screen; try to use CSS animations instead
 				setTimeout(function() {
 					document.getElementById("load-screen").className = "hide";
-				}, 100);
+				}, 1000);
 			});
 		});
 	}
