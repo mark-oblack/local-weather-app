@@ -104,7 +104,7 @@ $(document).ready(function() {
 				//Test to determine whether to use sun or moon for clear conditions
 				if(weatherType === "Clear" && (hours <= 6 || hours >= 19)) {
 					$(".weather-icon").attr("src", "assets/clear.png");
-				} else {
+				} else if (weatherType === "Clear" && (hours > 6 || hours < 19)) {
 					$(".weather-icon").attr("src", "assets/sunny.png");
 				}
 

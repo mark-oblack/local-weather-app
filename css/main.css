@@ -53,8 +53,9 @@ button {
 	cursor: pointer;
 	font-size: 1.2em;
 	font-weight: 500;
-	margin: 25px 5px;
 	height: 50px;
+	margin: 25px 5px;
+	text-align: center;
 	width: 50px;
 }
 
