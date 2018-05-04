@@ -36,7 +36,21 @@ h1 {
 
 p {
 	font-weight: 400;
-	line-height: 1.25;
+	line-height: 1.25em;
+}
+
+a {
+	color: #dfe6e9;
+	display: block;
+	font-weight: 300;
+	line-height: 1.25em;
+	margin-top: 12px;
+	text-decoration: none;
+}
+
+a:hover {
+	cursor: pointer;
+	color: #0a76bf;
 }
 
 

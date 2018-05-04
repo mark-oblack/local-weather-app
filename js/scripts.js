@@ -11,20 +11,22 @@
 //
 
 $(document).ready(function() {
-	var latitude;
-	var longitude;
-	var fareneheit;
-	var celsius;
-	var city;
-	var country;
-	var weatherType;
+	let url;
+	let latitude;
+	let longitude;
+	let fahrenheit;
+	let celsius;
+	let city;
+	let country;
+	let weatherType;
+	let weatherIcon;
 
 	//Current Time
-	var time;
-	var date = new Date();
-	var hours = date.getHours();
-	var minutes = date.getMinutes();
-	var getTime = function () {
+	let time;
+	let date = new Date();
+	let hours = date.getHours();
+	let minutes = date.getMinutes();
+	let getTime = function () {
 		if (hours > 12 && minutes < 10) {
 			time = (hours - 12) + ":0" + minutes + " PM";
 		} else if (hours < 12 && minutes < 10) {
@@ -52,76 +54,78 @@ $(document).ready(function() {
 
 	//Geolocation
 	if (navigator.geolocation) { //Prompts user to allow/block browser from viewing location
-	  navigator.geolocation.getCurrentPosition(function(position) { //obtains geolocation
-	    latitude = position.coords.latitude; 
-	    longitude = position.coords.longitude;
-		var api="https://fcc-weather-api.glitch.me/api/current?lat=" + latitude + "&lon=" + longitude;
-			$.getJSON(api, function(data){
-				weatherType = data.weather[0].main;
-				city = data.name;
-				country = data.sys.country;
-				celsius = data.main.temp;
-				farenheit = ((celsius * 1.8) + 32);
+	  	navigator.geolocation.getCurrentPosition(function(position) { //obtains geolocation
+		    latitude = position.coords.latitude; 
+		    longitude = position.coords.longitude;
+		    url = "https://api.darksky.net/forecast/62068efe0e8f1769f4c18f8d24d0665c/" + latitude + "," + longitude;
+			$.getJSON(url, function(data){
+				console.log(data);
+				weatherType = data.currently.summary;
+				weatherIcon = data.currently.icon;
+				city = data.city;
+				country = data.country;
+				fahrenheit = data.currently.temperature;
+				celsius = ((fahrenheit - 32) * (5/9));
 				celsius = celsius.toFixed(0);
-				farenheit = farenheit.toFixed(0);
-				//Corrects issue of celsius displaying as -0;
-				if (celsius === -0) {
-					celsius = 0;
-				}
+				fahrenheit = fahrenheit.toFixed(0);
+			}).done(function() {
 				//Write to HTML
-				$(".location").html(city + ", " + country);
-				$(".temperature").html(farenheit + "&deg; F");
+				// $(".location").html(city + ", " + country);
+				$(".temperature").html(fahrenheit + "&deg; F");
 				$(".current-weather").html(weatherType);
 				//Adjust src of .weather-icon based on weather
-				$(".weather-icon-container").append("<img class='weather-icon' alt='Weather Description'>");
-				switch(weatherType) {
-					case "Snow":
-					$(".weather-icon").attr("src", "assets/snow.png");
+				$(".weather-icon-container").append("<img class='weather-icon' alt='" + weatherIcon + "-icon'/>");
+				switch(weatherIcon) {
+					case "clear-day":
+					$(".weather-icon").attr("src", "assets/clear-day.png");
 					break;
-					case "Clouds":
+					case "clear-night":
+					$(".weather-icon").attr("src", "assets/clear-night.png");
+					break;
+					case "partly-cloudy-day":
+					$(".weather-icon").attr("src", "assets/partly-cloudy-day.png");
+					break;
+					case "partly-cloudy-night":
+					$(".weather-icon").attr("src", "assets/partly-cloudy-night.png");
+					break;
+					case "cloudy":
 					$(".weather-icon").attr("src", "assets/cloudy.png");
 					break;
-					case "Thunderstorm":
-					$(".weather-icon").attr("src", "assets/thunder.png");
-					break;
-					case "Rain":
-					case "Drizzle":
+					case "rain":
 					$(".weather-icon").attr("src", "assets/rain.png");
 					break;
-					// case ("Clear"):
-					// $(".weather-icon").attr("src", "assets/clear.png");
-					// break;
-					case "Mist":
-					$(".weather-icon").attr("src", "assets/mist.png");
+					case "sleet":
+					$(".weather-icon").attr("src", "assets/sleet.png");
 					break;
-					case "Sunny":
-					$(".weather-icon").attr("src", "assets/sunny.png");
+					case "snow":
+					$(".weather-icon").attr("src", "assets/snow.png");
+					break;
+					case "wind":
+					$(".weather-icon").attr("src", "assets/wind.png");
+					break;
+					case "fog":
+					$(".weather-icon").attr("src", "assets/fog.png");
 					break;
 					default: 
 					$(".weather-icon").attr("src", "");
 				}
 
-				//Test to determine whether to use sun or moon for clear conditions
-				if(weatherType === "Clear" && (hours <= 6 || hours >= 19)) {
-					$(".weather-icon").attr("src", "assets/clear.png");
-				} else if (weatherType === "Clear" && (hours > 6 || hours < 19)) {
-					$(".weather-icon").attr("src", "assets/sunny.png");
-				}
-
 				//Hide load screen; try to use CSS animations instead
 				setTimeout(function() {
 					document.getElementById("load-screen").className = "hide";
-				}, 1000);
+				});
 			});
 		});
+		
 	}
 
 	//Temperature conversion
-	$(".farenheit-button").click(function() {
-		$(".temperature").html(farenheit + "&deg; F");
+	$(".fahrenheit-button").click(function() {
+		$(".temperature").html(fahrenheit + "&deg; F");
 	});
 
 	$(".celsius-button").click(function() {
 		$(".temperature").html(celsius + "&deg; C");
 	});
+
 });
