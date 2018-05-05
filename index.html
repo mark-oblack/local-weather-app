@@ -31,9 +31,9 @@
 		</div>
 		<div class="wrapper">
 			<header>
-				<h1>Your Local Weather</h1>
+				<h1>Local Weather</h1>
 				<p class="local-time">Current Time</p>
-				<p class="location">Current Location</p>
+				<!-- <p class="location">Current Location</p> -->
 			</header>
 			<section class="weather-information">
 				<figure class="weather-icon-container"></figure>
@@ -41,10 +41,13 @@
 				<p class="temperature">Current Temperature</p>
 				<button class="fahrenheit-button">&deg;F</button>
 				<button class="celsius-button">&deg;C</button>
-				<p class="refresh-notice">Please refresh the page to obtain your updated weather</p>
-				<a href="https://darksky.net/poweredby/" target="_blank">Powered by Dark Sky</a>
+				<!-- <p class="refresh-notice">Please refresh the page to obtain your updated weather</p> -->
+				<input class="refresh-button" type="button" value="Refresh" onClick="window.location.reload()">
 			</section>
 			<footer>
+				<a href="https://darksky.net/poweredby/" target="_blank">
+					<img class="contribution" src="assets/powered-by-darksky.png" alt="Powered by Dark Sky API">
+				</a>
 				<p class="copyright">&copy; 2018 Mark E. O&#39;Black</p>
 			</footer>
 		</div>
