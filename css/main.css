@@ -319,7 +319,7 @@ Weather Information
 .refresh-button {
     background-color: #0984e3;
     border: none;
-    border-radius: 50px;
+    border-radius: 25px;
     color: #fff;
     cursor: pointer;
     display: block;
