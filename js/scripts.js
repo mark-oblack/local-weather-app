@@ -10,31 +10,26 @@
 //	c) When button is clicked again, variable containing farenheit value is displayed
 //
 
-$(document).ready(function() {
-	let proxy = "https://cors-anywhere.herokuapp.com/";
-	let api = "https://api.darksky.net/forecast/62068efe0e8f1769f4c18f8d24d0665c/";
-	let url;
-	let latitude;
-	let longitude;
-	let fahrenheit;
-	let celsius;
-	let city;
-	let state;
-	let country;
-	let weatherType;
-	let weatherIcon;
 
+let proxy = "https://cors-anywhere.herokuapp.com/";
+let api = "https://api.darksky.net/forecast/62068efe0e8f1769f4c18f8d24d0665c/";
+let fahrenheit;
+let celsius;
+let weatherType;
+let weatherIcon;
+
+$(document).ready(function() {
 	//Geolocation
   	navigator.geolocation.getCurrentPosition(function(position) { //obtains geolocation
-  		latitude = position.coords.latitude;
-  		longitude = position.coords.longitude;
-	    url = proxy + api + latitude + "," + longitude;
+  		let latitude = position.coords.latitude;
+  		let longitude = position.coords.longitude;
+	    let url = proxy + api + latitude + "," + longitude;
 		$.getJSON(url, function(data){
 			console.log(data);
 			weatherType = data.currently.summary;
 			weatherIcon = data.currently.icon;
-			city = data.city;
-			country = data.country;
+			let city = data.city;
+			let country = data.country;
 			fahrenheit = data.currently.temperature;
 			celsius = ((fahrenheit - 32) * (5/9));
 			celsius = celsius.toFixed(0);
@@ -112,16 +107,16 @@ $(document).ready(function() {
 			//Hide load screen; try to use CSS animations instead
 			setTimeout(function() {
 				document.getElementById("load-screen").className = "hide";
-			});
+			}, 100);
 		});
 	});
-	//Temperature conversion
-	$(".fahrenheit-button").click(function() {
-		$(".temperature").html(fahrenheit + "&deg; F");
-	});
+});
 
-	$(".celsius-button").click(function() {
-		$(".temperature").html(celsius + "&deg; C");
-	});
+//Temperature conversion
+$(".fahrenheit-button").click(function() {
+	$(".temperature").html(fahrenheit + "&deg; F");
+});
 
+$(".celsius-button").click(function() {
+	$(".temperature").html(celsius + "&deg; C");
 });
